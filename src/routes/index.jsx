@@ -6,8 +6,10 @@ import { LoginPage } from '@/components/LoginPage';
 import Home from '@/Pages/Home';
 import Visits from '@/Pages/Visits/Visits';
 import VisitsAdd from '@/Pages/Visits/VisitsAdd';
-import SalesAdd from '@/Pages/Sales/SalesAdd';
+import SalesAdd from '@/Pages/SalesMan/SalesManAdd';
 import Sales from '@/Pages/Sales/Sales';
+import SalesMan from '@/Pages/SalesMan/SalesMan';
+import SalesManAdd from '@/Pages/SalesMan/SalesManAdd';
 
 
 // Protected Route Wrapper
@@ -31,12 +33,16 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/home" replace /> },
       { path: 'home', element: <Home /> },
 
-      // مثال لصفحة visits
+      // visits
       { path: 'visits', element: <Visits /> },
       { path: 'visits/add', element: <VisitsAdd /> },
       { path: 'visits/:id/edit', element: <VisitsAdd /> },
 
-      // كرري نفس النمط لباقي الصفحات
+      // sales man
+      { path: 'sales-man', element: <SalesMan /> },
+      { path: 'sales-man/add', element: <SalesManAdd /> },
+      { path: 'sales-man/:id/edit', element: <SalesManAdd /> },
+      // sales
       { path: 'sales', element: <Sales /> },
       { path: 'sales/add', element: <SalesAdd /> },
       { path: 'sales/:id/edit', element: <SalesAdd /> },

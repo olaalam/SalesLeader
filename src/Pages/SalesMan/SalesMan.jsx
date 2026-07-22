@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataTable } from "@/components/DataTable";
 import { useGet } from "@/hooks/useGet";
 
@@ -14,7 +15,8 @@ const formatDate = (dateString) => {
     });
 };
 
-const Sales = () => {
+const SalesMan = () => {
+    const navigate = useNavigate();
 
     // ---- Filter State ----
     const [selectedSalesFilter, setSelectedSalesFilter] = useState("");
@@ -22,8 +24,8 @@ const Sales = () => {
     // ---- Get Sales Data ----
     // ⚠️ غيري اسم الـ key (مثلاً sales_id أو leader_id أو id) حسب ما يطلبه الباك إند ف الـ Query
     const salesApiUrl = selectedSalesFilter
-        ? `/api/admin/visits/sales?sales_id=${selectedSalesFilter}`
-        : "/api/admin/visits/sales";
+        ? `/api/admin/sales?sales_id=${selectedSalesFilter}`
+        : "/api/admin/sales";
 
     const { data: response, loading: isLoading, refresh } = useGet(salesApiUrl);
     const sales = response?.data?.sales || [];
@@ -85,7 +87,7 @@ const Sales = () => {
 
             <DataTable
                 title="Sales Management"
-                showAdd={false}
+                onAdd={() => navigate("/sales-man/add")}
                 showActions={false}
                 columns={columns}
                 data={sales}
@@ -95,4 +97,4 @@ const Sales = () => {
     );
 };
 
-export default Sales;
+export default SalesMan;

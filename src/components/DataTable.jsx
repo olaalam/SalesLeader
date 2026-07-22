@@ -7,6 +7,7 @@ import { Search, Plus, Pencil, Trash2 } from "lucide-react";
 export const DataTable = ({ 
   title, 
   onAdd, 
+  showAdd = true, // 👈 1. إضافة showAdd هنا لقراءة القيمة
   columns, 
   data = [], 
   onEdit, 
@@ -24,10 +25,11 @@ export const DataTable = ({
   return (
     <div className="space-y-4 w-full">
       {/* العنوان وزر الإضافة */}
-      {(title || onAdd) && (
+      {(title || (showAdd && onAdd)) && (
         <div className="flex justify-between items-center mb-4">
           {title && <h2 className="text-xl font-bold">{title}</h2>}
-          {onAdd && (
+          {/* 👈 2. التأكد من شرط showAdd عند عرض الزر */}
+          {showAdd && onAdd && (
             <Button onClick={onAdd} className="gap-2">
               <Plus className="h-4 w-4" /> Add
             </Button>

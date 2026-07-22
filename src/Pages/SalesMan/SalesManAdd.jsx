@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Controller } from "react-hook-form";
 
-const SalesAdd = () => {
+const SalesManAdd = () => {
     return (
         <AddPage
             title="Add Sales"
@@ -174,4 +174,4 @@ const SalesAdd = () => {
     );
 };
 
-export default SalesAdd;
+export default SalesManAdd;
